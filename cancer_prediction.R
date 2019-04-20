@@ -22,7 +22,7 @@ normalize <- function(x) {
 
 
 # normalize the wbcd data
-wbcd_r<-as.data.frame(lapply(dataset[2:31], normalize))
+wbcd_r<-as.data.frame(lapply(wbcd[2:31], normalize))
 
 # confirm that normalization worked
 summary(wbcd_r$area_mean)
@@ -52,3 +52,33 @@ library(gmodels)
 # Create the cross tabulation of predicted vs. actual
 CrossTable(x = wbcd_test_labels, y = wbcd_test_pred,
            prop.chisq = FALSE)
+
+#Cell Contents
+#|-------------------------|
+#  |                       N |
+#  |           N / Row Total |
+#  |           N / Col Total |
+#  |         N / Table Total |
+#  |-------------------------|
+  
+  
+#  Total Observations in Table:  100 
+
+
+#              | wbcd_test_pred 
+#wbcd_test_labels | Benign | Malignant | Row Total | 
+#  ------------|-----------|-----------|-----------|
+#  Benign      |        61 |         0 |        61 | 
+#              |     1.000 |     0.000 |     0.610 | 
+#              |     0.968 |     0.000 |           | 
+#              |     0.610 |     0.000 |           | 
+#  ------------|-----------|-----------|-----------|
+#  Malignant   |         2 |        37 |        39 | 
+#              |     0.051 |     0.949 |     0.390 | 
+#              |     0.032 |     1.000 |           | 
+#              |     0.020 |     0.370 |           | 
+# -------------|-----------|-----------|-----------|
+# Column Total |        63 |        37 |       100 | 
+#              |     0.630 |     0.370 |           | 
+#  ------------|-----------|-----------|-----------|
+  
